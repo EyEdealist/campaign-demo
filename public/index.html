@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" ng-app="campaignDemoApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>ActionKit Campaign Demo</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style/bootstrap.min.css" />
+    <link rel="stylesheet" href="style/main.css">
+
+    <!-- Scripts -->
+    <script src="js/vendor/modernizr.min.js"></script>
+</head>
+<body>
+
+    <div class="jumbotron shadow invert">
+        <div class="container">
+            <h1>ActionKit Campaign Demo</h1>
+            <p>Demonstration of displaying information obtained from the ActionKit REST API. There are two views
+                available, static and live. The static view gets data from a MongoDB database preloaded with records.
+                The live view retrieves data directly from the ActionKit API.</p>
+            <br />
+            <div class="text-center">
+                <a href="#/" class="btn btn-lg btn-default">Static</a>
+                <a href="#/live" class="btn btn-lg btn-default">Live</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" ng-view></div>
+
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/angular.min.js"></script>
+    <script src="js/vendor/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

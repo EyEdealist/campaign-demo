@@ -1,0 +1,40 @@
+<div id="view-static">
+
+    <div ng-show="error" class="alert alert-danger" role="alert">
+        <strong>Uh oh!</strong> {{ error.data.message }}
+    </div>
+
+    <div class="panel panel-default shadow">
+        <div class="panel-heading">
+            <h3 class="panel-title">Campaigns</h3>
+        </div>
+
+        <div class="panel-body invert">
+            <form class="form-horizontal col-xs-12">
+                <div class="form-group">
+
+                    <label class="col-sm-4 control-label">Type:</label>
+                    <div class="col-sm-5 col-md-4">
+                        <div class="btn-group btn-group-justified" role="group">
+                            <div class="btn-group" role="group" ng-repeat="type in types">
+                                <button type="button" class="btn btn-default" ng-class="{ 'btn-success': isSelected(type) }" ng-click="toggleType(type)">{{ type }}</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        <ul class="list-group">
+            <li ng-hide="pages.length" class="placeholder text-center">
+                <h3>no records found</h3>
+                <p>Did you forget to run <code>node ./bin/scrape</code> to seed the database?</p>
+            </li>
+            <li ng-repeat="campaign in pages" class="list-group-item">
+                <span class="badge">{{ campaign.type }}</span> {{ campaign.title }}
+            </li>
+        </ul>
+    </div>
+
+</div>

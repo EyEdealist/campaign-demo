@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var program = require('commander'),
+    mongoose = require('mongoose'),
+    config = require('../config.json'),
+    ActionKit = require('../lib/action-kit'),
+    models = require('../models');
+
+mongoose.connect(config.mongodb);
+
+program
+    .version('0.0.1')
+    .description('Scrape ActionKit API and seed database')
+    .option('-c, --count <number>', 'number of pages to scrape', parseInt)
+    .parse(process.argv);
+
+var count = program.count || 500;
+
+console.log('Scraping latest ' + count + ' pages');
+console.time('--scrape timer');
+ActionKit.scrape(count, function(err, pages) {
+    if(err) {
+        throw err;
+    }
+
+    console.log('--pages fetched: ' + pages.length);
+    console.timeEnd('--scrape timer');
+
+    console.log('Inserting pages');
+    console.time('--insert timer');
+
+    var batch = models.Page.collection.initializeOrderedBulkOp();
+
+    pages.forEach(function(page) {
+        var query = {
+            id: page.id
+        };
+
+        batch.find(query).upsert().updateOne(page);
+    });
+
+    batch.execute(function(err, result) {
+        if(err) {
+            throw err;
+        }
+
+        console.log('--pages inserted: ' + result.nUpserted);
+        console.log('--pages updated: ' + result.nModified);
+        console.timeEnd('--insert timer');
+        mongoose.disconnect();
+    });
+});

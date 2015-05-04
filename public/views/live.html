@@ -1,0 +1,65 @@
+<div id="view-live">
+
+    <div ng-show="error" class="alert alert-danger" role="alert">
+        <strong>Uh oh!</strong> {{ error.data.message }}
+    </div>
+
+    <div class="panel panel-default shadow">
+        <div class="panel-heading">
+            <h3 class="panel-title">Campaigns</h3>
+        </div>
+
+        <div class="panel-body invert">
+            <form class="form-horizontal col-xs-12">
+                <div class="form-group">
+
+                    <label for="input-count" class="col-sm-4 control-label" >Count:</label>
+                    <div class="col-xs-10 col-sm-5 col-md-4">
+                        <div class="input-group">
+                            <input id="input-count"
+                                   class="form-control"
+                                   type="number"
+                                   min="1"
+                                   max="100"
+                                   ng-model="count"
+                                   ng-disabled="loading">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary"
+                                        type="submit"
+                                        ng-click="fetch()"
+                                        ng-disabled="loading">Go</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 col-sm-3 col-md-4">
+                        <span class="loading small" ng-show="loading && pages.length > 0"></span>
+                    </div>
+
+                </div>
+                <br />
+                <div class="form-group">
+
+                    <label class="col-sm-4 control-label">Type:</label>
+                    <div class="col-sm-5 col-md-4">
+                        <div class="btn-group btn-group-justified" role="group">
+                            <div class="btn-group" role="group" ng-repeat="type in types">
+                                <button type="button" class="btn btn-default" ng-class="{ 'btn-success': isSelected(type) }" ng-click="toggleType(type)">{{ type }}</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        <ul class="list-group">
+            <li ng-hide="pages.length" class="placeholder text-center">
+                <span class="loading"></span>
+            </li>
+            <li ng-repeat="campaign in pages | filter:filterByType" class="list-group-item">
+                <span class="badge">{{ campaign.type }}</span> {{ campaign.title }}
+            </li>
+        </ul>
+    </div>
+
+</div>

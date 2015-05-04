@@ -1,0 +1,10 @@
+{
+    "actionKit": {
+        "url": "https://act.engagementlab.org/rest/v1/page/",
+        "auth": {
+            "username": "api_temp",
+            "password": "accelerate"
+        }
+    },
+    "mongodb": "mongodb://localhost/campaign-demo"
+}

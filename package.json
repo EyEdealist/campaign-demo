@@ -1,0 +1,20 @@
+{
+    "name": "campaign-demo",
+    "version": "0.0.1",
+    "description": "ActionKit API campaign titles demonstration",
+    "private": true,
+    "scripts": {
+        "start": "node ./bin/www"
+    },
+    "author": "Trevor Cords <tcords@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "async": "^0.9.0",
+        "commander": "^2.8.1",
+        "express": "^4.12.3",
+        "mongoose": "^4.0.2",
+        "morgan": "~1.5.1",
+        "request": "^2.55.0",
+        "serve-favicon": "~2.2.0"
+    }
+}

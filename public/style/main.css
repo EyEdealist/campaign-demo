@@ -1,0 +1,51 @@
+body {
+    background: url('/img/bg.jpg') fixed top center;
+    background-size: cover;
+}
+
+.invert {
+    background-color: #222;
+    color: #ddd;
+}
+
+.shadow {
+    box-shadow: 0 0 10px rgba(0,0,0, 1);
+}
+
+code {
+    padding: 0.4em;
+    font-size: 85%;
+    background-color: rgba(0,0,0, 0.04);
+}
+
+.loading {
+    width: 64px;
+    height: 64px;
+    background: url('/img/loading.gif') center;
+    background-size: cover;
+    display: inline-block;
+}
+.loading.small {
+    width: 28px;
+    height: 28px;
+}
+
+.placeholder {
+    padding: 20px 0;
+}
+
+.placeholder h3 {
+    color: #999;
+    font-weight: 200;
+    font-size: 2em;
+}
+.placeholder p {
+    margin-bottom: 20px;
+}
+
+@media(min-width: 768px) {
+    .panel-body .form-group:first-child {
+        margin-bottom: 0;
+        padding: 15px 0;
+    }
+}
